@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
+import { OutlinedInput, InputAdornment, Box, IconButton, Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import HotelIcon from '@material-ui/icons/Hotel';
+import LocalSeeIcon from '@material-ui/icons/LocalSee';
+import MuseumIcon from '@material-ui/icons/Museum';
+import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
 import useStyles from './styles.js';
 
@@ -9,26 +15,59 @@ import useStyles from './styles.js';
 const Header = () => {
     const classes = useStyles();
 
+    const onLoad = (autocomplete) => {
+        console.log('autocomplete: ', autocomplete);
+    };
+
+    const onPlaceChanged = () => {
+        console.log('onPlaceChanged');
+    };
+
     return (
-        <AppBar position="static">
-            <Toolbar className={classes.toolbar}>
-                <Typography variant="h5" className={classes.title}>
-                    eatngo
-                </Typography>
-                <Box display="flex">
-                    <Typography variant="h6" className={classes.title}>
-                    </Typography>
-                    {/*<Autocomplete>*/}
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
+        <Box display="flex" justifyContent="center" alignItems="center" className={classes.toolbar}>
+            {/*<Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>*/}
+            <div className={classes.search}>
+                <OutlinedInput
+                    placeholder="Search eatngo"
+                    classes={{ root: classes.inputRoot }}
+                    style={{ width: '200px', borderRadius: '20px' }}
+                    startAdornment={
+                        <InputAdornment position="start">
                             <SearchIcon />
-                        </div>
-                        <InputBase placeholder="Search here" classes={{ root: classes.inputRoot, input: classes.inputInput }} />
-                    </div>
-                    {/*</Autocomplete>*/}
+                        </InputAdornment>
+                    }
+                />
+            </div>
+            {/*</Autocomplete>*/}
+            <Box display="flex" alignItems="center" marginLeft="10px">
+                <Box display="flex" flexDirection="row" >
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <RestaurantIcon />
+                        <Typography variant="body2">Restaurants</Typography>
+                    </IconButton>
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <HotelIcon />
+                        <Typography variant="body2">Hotels</Typography>
+                    </IconButton>
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <LocalSeeIcon />
+                        <Typography variant="body2">Things to do</Typography>
+                    </IconButton>
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <MuseumIcon />
+                        <Typography variant="body2">Museum</Typography>
+                    </IconButton>
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <DirectionsBusIcon />
+                        <Typography variant="body2">Transit</Typography>
+                    </IconButton>
+                    <IconButton style={{ borderRadius: '20px' }}>
+                        <LocalAtmIcon />
+                        <Typography variant="body2">ATMs</Typography>
+                    </IconButton>
                 </Box>
-            </Toolbar>
-        </AppBar>
+            </Box>
+        </Box>
     );
 }
 export default Header;
