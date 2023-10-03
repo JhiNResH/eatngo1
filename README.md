@@ -1,2 +1,2 @@
-# eatngo1
-decentralrized review platform
+# eatngo
+a decentralrized review platform
