@@ -24,11 +24,11 @@ const Header = () => {
     };
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" className={classes.toolbar}>
+        <div className={classes.toolbar}>
             {/*<Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>*/}
             <div className={classes.search}>
                 <OutlinedInput
-                    placeholder="Search eatngo"
+                    placeholder="Search EatNgo"
                     classes={{ root: classes.inputRoot }}
                     style={{ width: '200px', borderRadius: '20px' }}
                     startAdornment={
@@ -67,7 +67,7 @@ const Header = () => {
                     </IconButton>
                 </Box>
             </Box>
-        </Box>
+        </div>
     );
-}
+};
 export default Header;

@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
     search: {
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: '#f2f2f2',
+        // backgroundColor: '#f2f2f2',
         borderRadius: theme.shape.borderRadius,
         width: '50%',
         [theme.breakpoints.down('sm')]: {
